@@ -10,11 +10,13 @@
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const key = urlParams.get('key') ?? "xxx"
+            const size = urlParams.get('size') ?? "normal"
             console.log(key)
 
             grecaptcha.render('my_captcha', {
               'sitekey' : key,
-              'callback' : onSubmit
+              'callback' : onSubmit,
+              'size': size
             });
         };
     </script>
