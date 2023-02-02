@@ -1,14 +1,10 @@
 <html>
 <head>
     <title>Captcha Demo</title>
-    <script src="https://www.google.com/recaptcha/enterprise.js?onload=onloadCallback&render=explicit" async defer>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </script>
     <script type="text/javascript">
-      var onloadCallback = function() {
-        grecaptcha.enterprise.render('html_element', {
-          'sitekey' : '6Ldr70gkAAAAAPwMLIit95kSWqSDVWSeVgOEQyWB',
-        });
-      };
+      grecaptcha.execute();
     </script>
     <style>
         .container {
@@ -41,10 +37,6 @@
           text-decoration: none;
           cursor: pointer;
         }
-
-        .centerMeat {
-          margin-left: 3.5rem;
-        }
     </style>
 </head>
 <body>
@@ -54,8 +46,13 @@
             <div class="centerDiv">
                 <div class="meat"> Don't worry - We only check if you are not a robot 🤖</div>
             </div>
-            <div class="centerMeat" id="html_element"></div>
         </div>
+    </div>
+
+    <div class="g-recaptcha"
+         data-sitekey="6LfzoEgkAAAAABpvU6GfbdHYIa97DFtfrg5CuooO"
+         data-callback="onSubmit"
+         data-size="invisible">
     </div>
 </form>
 </body>
