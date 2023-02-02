@@ -18,6 +18,10 @@
               'callback' : onSubmit,
               'size': size
             });
+
+            if(size == 'invisible') {
+                grecaptcha.execute();
+            }
         };
     </script>
     <style>
