@@ -2,16 +2,13 @@
 <head>
     <title>Captcha Demo</title>
     <script type="text/javascript">
-        var onSubmit = function(token) {
-          console.log('success!');
-        };
-
-        var onloadCallback = function() {
-          grecaptcha.render('submit', {
-            'sitekey' : '6Ldr70gkAAAAAPwMLIit95kSWqSDVWSeVgOEQyWB',
-            'callback' : onSubmit
-          });
-        };
+        function script() {
+            console.log("load");
+            grecaptcha.execute();
+        }
+        function onSubmit(token) {
+            console.log(token)
+        }
     </script>
     <style>
         .container {
@@ -50,7 +47,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="script();">
 <form action="" method="POST">
     <div class="container">
         <div class="center">
@@ -59,10 +56,13 @@
             </div>
         </div>
     </div>
-    <div id="submit"></div>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-            async defer>
-    </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <div class="g-recaptcha"
+         data-sitekey="6LfzoEgkAAAAABpvU6GfbdHYIa97DFtfrg5CuooO"
+         data-callback="onSubmit"
+         data-size="invisible">
+    </div>
 </form>
 </body>
 </html>
