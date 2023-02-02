@@ -1,0 +1,59 @@
+<html>
+<head>
+<!--    Need to replace {hCaptchaKey}, {fCaptchaKey}, {reCaptchaKey} with your keys-->
+    <title>Captcha Demo</title>
+    <script>
+    </script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lc19w0kAAAAAECNIynu97U7hFBMmN3zlvYznwhA"></script>
+    <script>
+        grecaptcha.enterprise.ready(function() {
+            grecaptcha.enterprise.execute('6Lc19w0kAAAAAECNIynu97U7hFBMmN3zlvYznwhA', {action: 'login'}).then(function(token) {
+               console.log(token)
+            });
+        });
+    </script>
+    <style>
+        .container {
+          height: 30rem;
+          position: relative;
+        }
+
+        .center {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+
+        .centerDiv {
+            text-align: center
+        }
+
+        input[type=submit] {
+          font-family: 'Roboto', sans-serif;
+          border-radius: 0.2rem;
+          width: 90%;
+          font-size: 1.2rem;
+          background-color: #04AA6D;
+          border: none;
+          color: white;
+          padding: 1rem 1.2rem;
+          text-decoration: none;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="POST">
+    <div class="container">
+        <div class="center">
+            <div class="centerDiv">
+                <input type="submit" value="Submit" id="submitButton"/>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
