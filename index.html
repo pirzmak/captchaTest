@@ -2,13 +2,21 @@
 <head>
     <title>Captcha Demo</title>
     <script type="text/javascript">
-        function script() {
-            console.log("load");
-            grecaptcha.execute();
-        }
         function onSubmit(token) {
             console.log(token)
         }
+
+        function onloadCallback() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const key = urlParams.get('key') ?? "xxx"
+            console.log(key)
+
+            grecaptcha.render('my_captcha', {
+              'sitekey' : key,
+              'callback' : onSubmit
+            });
+        };
     </script>
     <style>
         .container {
@@ -47,22 +55,19 @@
         }
     </style>
 </head>
-<body onload="script();">
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<body>
 <form action="" method="POST">
     <div class="container">
         <div class="center">
             <div class="centerDiv">
                 <div class="meat"> Don't worry - We only check if you are not a robot 🤖</div>
             </div>
-            <div class="g-recaptcha"
-                 data-sitekey="6Ldr70gkAAAAAPwMLIit95kSWqSDVWSeVgOEQyWB"
-                 data-callback="onSubmit"
-                 data-badge="inline"
-                 data-size="invisible">
-        </div>
+            <div id="my_captcha"></div>
         </div>
     </div>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+            async defer>
+    </script>
 </form>
 </body>
 </html>
