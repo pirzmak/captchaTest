@@ -1,14 +1,29 @@
 <html>
 <head>
     <title>Captcha</title>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdOhHkkAAAAAOzMQHIk5zx1m1zo0sxdVd_D1s-g"></script>
-<script>
-grecaptcha.enterprise.ready(function() {
-    grecaptcha.enterprise.execute('6LdOhHkkAAAAAOzMQHIk5zx1m1zo0sxdVd_D1s-g', {action: 'login'}).then(function(token) {
-       console.log(token)
-    });
-});
-</script>
+    <script type="text/javascript">
+        function onSubmit(token) {
+            console.log(token)
+        }
+
+        function onloadCallback() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const key = urlParams.get('key') ?? "xxx"
+            const size = urlParams.get('size') ?? "normal"
+            console.log(key)
+
+            grecaptcha.render('my_captcha', {
+              'sitekey' : key,
+              'callback' : onSubmit,
+              'size': size
+            });
+
+            if(size == 'invisible') {
+                grecaptcha.execute();
+            }
+        };
+    </script>
     <style>
         .container {
           height: 30rem;
