@@ -3,6 +3,7 @@
     <title>Captcha</title>
     <script type="text/javascript">
         function onSubmit(token) {
+            window.location.replace(window.origin + "/submit?token=" + token)
             console.log(token)
         }
 
@@ -11,7 +12,6 @@
             const urlParams = new URLSearchParams(queryString);
             const key = urlParams.get('key') ?? "xxx"
             const size = urlParams.get('size') ?? "normal"
-            console.log(key)
 
             grecaptcha.render('my_captcha', {
               'sitekey' : key,
