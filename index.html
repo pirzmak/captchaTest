@@ -3,8 +3,8 @@
     <title>Captcha</title>
     <script type="text/javascript">
         function onSubmit(token) {
-            window.location.replace(window.origin + "/submit?token=" + token)
-            console.log(token)
+            console.log(token);
+            window.location.replace(window.origin + "/submit?token=" + token);
         }
 
         function onloadCallback() {
