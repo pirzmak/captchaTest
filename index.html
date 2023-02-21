@@ -8,6 +8,21 @@
             (window.tdiff[0] = Date.now()) && window.tdiff.reduce(fred) ); 
         }
         window.onload = function(e){ 
+            try {
+                 const frame = document.body.children[2].children[1];
+                    const scale = document.body.clientWidth / frame.clientWidth;
+                    
+                    if(scale > 1) {
+                        frame.style['scale'] = scale;
+                    
+                        const frameTop = frame.clientHeight * (scale - 1) * 0.5;
+                        const framePadding = (document.body.clientHeight - frame.clientHeight * scale)/2;
+                        
+                        frame.style['top'] = frameTop + framePadding
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
             console.log("window.onload", e, Date.now() ,window.tdiff, 
             (window.tdiff[1] = Date.now()) && window.tdiff.reduce(fred) ); 
         }
@@ -30,22 +45,6 @@
 
             if(size == 'invisible') {
                 grecaptcha.execute();
-                
-                try {
-                    const frame = document.body.children[2].children[1];
-                    const scale = document.body.clientWidth / frame.clientWidth;
-                    
-                    if(scale > 1) {
-                        frame.style['scale'] = scale;
-                    
-                        const frameTop = frame.clientHeight * (scale - 1) * 0.5;
-                        const framePadding = (document.body.clientHeight - frame.clientHeight * scale)/2;
-                        
-                        frame.style['top'] = frameTop + framePadding
-                    }
-                } catch (e) {
-                    console.log(e);
-                }
             }
         };
     </script>
