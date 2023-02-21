@@ -9,11 +9,14 @@
                     const frame = document.body.children[2].children[1];
                     const scale = document.body.clientWidth / frame.clientWidth;
                     
-                    if(scale > 1) {
+                    const frameHeight = frame.clientHeight;
+                    const frameScaledHeight = frame.clientHeight*scale;
+                
+                    if(scale > 1 && frameScaledHeight < document.body.clientHeight) {
                         frame.style['scale'] = scale;
                     
-                        const frameTop = frame.clientHeight * (scale - 1) * 0.5;
-                        const framePadding = (document.body.clientHeight - frame.clientHeight * scale)/2;
+                        const frameTop = frameHeight * (scale - 1) * 0.5;
+                        const framePadding = (document.body.clientHeight - frameScaledHeight)/2;
                         
                         frame.style['top'] = frameTop + framePadding
                     }
