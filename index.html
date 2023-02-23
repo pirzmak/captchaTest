@@ -3,11 +3,12 @@
     <title>Captcha</title>
     <script type="text/javascript">
         function scale(tries) {
+            
+            console.log("scale " + tries)
             const frameContainer = document.body.children[2].children[1];
             const scale = (document.body.clientWidth-26) / frameContainer.clientWidth;
             
             if(scale < 1 && tries > 0) {
-                console.log(tries)
                 scale(tries-1)
             }
             const frameHeight = frameContainer.clientHeight;
