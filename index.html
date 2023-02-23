@@ -2,12 +2,13 @@
 <head>
     <title>Captcha</title>
     <script type="text/javascript">
-        function scale() {
+        function scale(tries) {
             const frameContainer = document.body.children[2].children[1];
             const scale = (document.body.clientWidth-26) / frameContainer.clientWidth;
-            console.log(frameContainer);
-                    
-            console.log(scale);
+            
+            if(scale < 1 && tries > 0) {
+                scale(tries-1)
+            }
             const frameHeight = frameContainer.clientHeight;
             const frameScaledHeight = frameContainer.clientHeight*scale;
                 
@@ -27,12 +28,12 @@
                     const frameContainer = document.body.children[2].children[1];
                     const iframe = frameContainer.children[0];
                     iframe.addEventListener("load", function() {
-                        scale();
+                        scale(10);
                     });
             } catch (e) {
                 console.log(e);
                 setTimeout(function () {
-                    scale(tries-1);
+                    onIframeLoad(tries-1);
                 }, 500);
             }
         }
