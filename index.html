@@ -7,6 +7,7 @@
             const scale = (document.body.clientWidth-26) / frameContainer.clientWidth;
             
             if(scale < 1 && tries > 0) {
+                console.log(tries)
                 scale(tries-1)
             }
             const frameHeight = frameContainer.clientHeight;
