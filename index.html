@@ -5,7 +5,9 @@
         function scale() {
             const frameContainer = document.body.children[2].children[1];
             const scale = (document.body.clientWidth-26) / frameContainer.clientWidth;
+            console.log(frameContainer);
                     
+            console.log(scale);
             const frameHeight = frameContainer.clientHeight;
             const frameScaledHeight = frameContainer.clientHeight*scale;
                 
