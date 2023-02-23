@@ -3,28 +3,30 @@
     <title>Captcha</title>
     <script type="text/javascript">
         function scale(tries) {
+            const frameContainer = document.body.children[2].children[1];
+            const scale = (document.body.clientWidth-26) / frameContainer.clientWidth;
+                    
+            const frameHeight = frameContainer.clientHeight;
+            const frameScaledHeight = frameContainer.clientHeight*scale;
+                
+            if(scale > 1 && frameScaledHeight < document.body.clientHeight) {
+                frameContainer.style['scale'] = scale;
+            }
+                
+            const frameTop = frameHeight * (scale - 1) * 0.5;
+            const framePadding = (document.body.clientHeight - frameScaledHeight)/2;
+                        
+            frameContainer.style['top'] = frameTop + framePadding
+        }
+        function onIframeLoad(tries) {
             if(tries === 0)
                 return;
             try {
                     const frameContainer = document.body.children[2].children[1];
                     const iframe = frameContainer.children[0];
-                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    if (iframeDoc.readyState !== 'complete') {
-                        scale(tries-1);
-                    }
-                    const scale = (document.body.clientWidth-26) / frameContainer.clientWidth;
-                    
-                    const frameHeight = frameContainer.clientHeight;
-                    const frameScaledHeight = frameContainer.clientHeight*scale;
-                
-                    if(scale > 1 && frameScaledHeight < document.body.clientHeight) {
-                        frameContainer.style['scale'] = scale;
-                    }
-                
-                    const frameTop = frameHeight * (scale - 1) * 0.5;
-                    const framePadding = (document.body.clientHeight - frameScaledHeight)/2;
-                        
-                    frameContainer.style['top'] = frameTop + framePadding
+                    iframe.addEventListener("load", function() {
+                        scale();
+                    });
             } catch (e) {
                 console.log(e);
                 setTimeout(function () {
