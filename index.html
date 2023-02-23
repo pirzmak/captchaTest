@@ -29,11 +29,14 @@
             try {
                     const frameContainer = document.body.children[2].children[1];
                     const iframe = frameContainer.children[0];
-                    iframe.addEventListener("load", function() {
+                    const target = document.getElementById("rc-imageselect-target");
+                    if(target === undefined) {
+                        console.log("und");
                         
-                        console.log("load " + tries)
-                        scale(10);
-                    });
+                        setTimeout(function () {
+                            onIframeLoad(tries-1);
+                        }, 500);
+                    }
             } catch (e) {
                 console.log(e);
                 setTimeout(function () {
