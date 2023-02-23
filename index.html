@@ -7,7 +7,7 @@
                 return;
             try {
                     const frameContainer = document.body.children[2].children[1];
-                    const iframe = frameContainer.children[1];
+                    const iframe = frameContainer.children[0];
                     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
                     if (iframeDoc.readyState !== 'complete') {
                         scale(tries-1);
