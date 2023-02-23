@@ -7,11 +7,15 @@
                 return;
             try {
                     const frame = document.body.children[2].children[1];
-                    const padding = 26;
-                    const scale = (document.body.clientWidth-26) / frame.clientWidth;
+                    let scale = (document.body.clientWidth-26) / frame.clientWidth;
                     
                     const frameHeight = frame.clientHeight;
-                    const frameScaledHeight = frame.clientHeight*scale;
+                    let frameScaledHeight = frame.clientHeight*scale;
+                 
+                    if(frameScaledHeight < document.body.clientHeight) {
+                        scale = (document.body.clientHeight-112) / frame.clientHeight;
+                        frameScaledHeight = frame.clientHeight*scale;
+                    }
                 
                     if(scale > 1 && frameScaledHeight < document.body.clientHeight) {
                         frame.style['scale'] = scale;
