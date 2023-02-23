@@ -30,6 +30,8 @@
                     const frameContainer = document.body.children[2].children[1];
                     const iframe = frameContainer.children[0];
                     iframe.addEventListener("load", function() {
+                        
+                        console.log("load " + tries)
                         scale(10);
                     });
             } catch (e) {
