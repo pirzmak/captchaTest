@@ -17,7 +17,7 @@
                         frameScaledHeight = frame.clientHeight*scale;
                     }
                 
-                    if(scale > 1) {
+                    if(scale > 1 && frameScaledHeight < document.body.clientHeight) {
                         frame.style['scale'] = scale;
                     }
                 
