@@ -15,12 +15,12 @@
                 
                     if(scale > 1 && frameScaledHeight < document.body.clientHeight) {
                         frame.style['scale'] = scale;
-                    
-                        const frameTop = frameHeight * (scale - 1) * 0.5;
-                        const framePadding = (document.body.clientHeight - frameScaledHeight)/2;
-                        
-                        frame.style['top'] = frameTop + framePadding
                     }
+                
+                    const frameTop = frameHeight * (scale - 1) * 0.5;
+                    const framePadding = (document.body.clientHeight - frameScaledHeight)/2;
+                        
+                    frame.style['top'] = frameTop + framePadding
             } catch (e) {
                 console.log(e);
                 setTimeout(function () {
