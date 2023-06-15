@@ -39,14 +39,8 @@
 
             grecaptcha.render('my_captcha', {
               'sitekey' : key,
-              'callback' : onSubmit,
-              'size': size
+              'callback' : onSubmit
             });
-
-            if(size == 'invisible') {
-                grecaptcha.execute();
-                scale(10);
-            }
         };
     </script>
     <style>
